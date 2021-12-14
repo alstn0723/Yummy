@@ -52,6 +52,17 @@ public class MemberController {
         return result;
     }
 
+    //Check Member Unique
+    @GetMapping(path = "/member/unique")
+    public Optional<Member> isMemberUnique(@RequestParam String member_id){
+
+        findMemberByMemberId(member_id)
+        Optional<Member> result = Optional.ofNullable(memberRepository.findMemberByName(name));
+
+        return result;
+    }
+
+
     //Delete Member by Id
     @DeleteMapping(path = "/member/delete")
     public String deleteMember(@RequestParam Long id){
